@@ -28,11 +28,33 @@ h3{
     box-sizing: border-box;
 }
 
+.input_b_box{
+    border-radius: 8px;
+}
+
+.filter-input{
+    border-radius: 8px;
+    width: 150px;
+}
+
+.input_box{
+    margin-right: 100px;
+    width: 150px;
+}
+
+.select_box{
+    margin-left: 5px;
+    width: 200px;
+}
+
 .searching_loction_container{
-    width:1500px;
-    margin-top: 12%;
-    margin-left: 33%;
-    background-color:rgba(185, 223, 225, 0.393);
+    width: 580px;
+    margin-top: 5%;
+    margin-left: 30%;
+    background-color:rgba(193, 235, 206, 0.667);
+    padding-bottom: 1%;
+    padding-left: 1%;
+    border-radius: 25px;
 }
 
 .popBox {
@@ -96,8 +118,10 @@ h3{
 }
 
 .search{
-    background-color: rgba(12, 235, 38, 0.427);
+    background-color: rgba(155, 44, 44, 0.701);
     font-size: x-large;
+    border-radius: 10px;
+    margin-top: 7%;
 }
 
 h5{
