@@ -45,20 +45,22 @@ def microsevice_image(image_Name):
     with open(filename2,"wb") as f:
         f.write(response.images2)
 
+# get imagelist according to name
+def get_imagelist(city_name):
+    imagelist = os.listdir('static/image_'+city_name)
+    return imagelist
+
 @app.route("/picture")
 def picture():
+    # use mircoservice get the image from server
     microsevice_image(session['travel_city'])
     if session['travel_city'] == 'New York':
-        # microsevice_image("New York")
-        imagelist = os.listdir('static/image_New York')
-        imagelist = ['image_New York/'+ image for image in imagelist]
+        # creat the imagelist for the html
+        imagelist = ['image_New York/'+ image for image in get_imagelist('New York')]
     elif session['travel_city'] == 'Los Angeles':
-        # microsevice_image("Los Angeles")
-        imagelist = os.listdir('static/image_Los Angeles')
-        imagelist = ['image_Los Angeles/'+ image for image in imagelist]
+        imagelist = ['image_Los Angeles/'+ image for image in get_imagelist('Los Angeles')]
     elif session['travel_city'] == 'San Francisco':
-        imagelist = os.listdir('static/image_San Francisco')
-        imagelist = ['image_San Francisco/'+ image for image in imagelist]
+        imagelist = ['image_San Francisco/'+ image for image in get_imagelist('San Francisco')]
 
     return render_template("picture.html", city_name = session['travel_city'], imagelist = imagelist)
 
