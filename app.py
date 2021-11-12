@@ -1,3 +1,7 @@
+import os
+import grpc
+import imagesend_pb2
+import imagesend_pb2_grpc
 from flask import Flask, render_template, request, jsonify, redirect, url_for , send_file
 from flask import session
 import os
@@ -28,17 +32,34 @@ def search():
 def options():
     return render_template("options.html")
 
-# IMAGE_FOLDER = os.path.join('static', 'imageny')
-# app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
+def microsevice_image(image_Name):
+    with grpc.insecure_channel('localhost:50051') as channel:
+        stub = imagesend_pb2_grpc.ImageSendStub(channel)
+        response = stub.Imagerequest(imagesend_pb2.image_name(image_name1=image_Name))
+    filename1 = "./static/image_"+image_Name+"/"+image_Name+"1.jpg"
+    os.makedirs(os.path.dirname(filename1), exist_ok=True)
+    with open(filename1,"wb") as f:
+        f.write(response.images1)
+    filename2 = "./static/image_"+image_Name+"/"+image_Name+"2.jpg"
+    os.makedirs(os.path.dirname(filename2), exist_ok=True)
+    with open(filename2,"wb") as f:
+        f.write(response.images2)
+
 @app.route("/picture")
 def picture():
+    microsevice_image(session['travel_city'])
     if session['travel_city'] == 'New York':
-        # full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'NY.jpg')
-        imagelist = os.listdir('static/imageny')
-        imagelist = ['imageny/' + image for image in imagelist]
-    else:
-        imagelist = os.listdir('static/imagela')
-        imagelist = ['imagela/' + image for image in imagelist]
+        # microsevice_image("New York")
+        imagelist = os.listdir('static/image_New York')
+        imagelist = ['image_New York/'+ image for image in imagelist]
+    elif session['travel_city'] == 'Los Angeles':
+        # microsevice_image("Los Angeles")
+        imagelist = os.listdir('static/image_Los Angeles')
+        imagelist = ['image_Los Angeles/'+ image for image in imagelist]
+    elif session['travel_city'] == 'San Francisco':
+        imagelist = os.listdir('static/image_San Francisco')
+        imagelist = ['image_San Francisco/'+ image for image in imagelist]
+
     return render_template("picture.html", city_name = session['travel_city'], imagelist = imagelist)
 
 @app.route("/main")
