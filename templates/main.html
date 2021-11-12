@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>City GuideBook</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:100" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous">
+    
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <script language="javascript" type="text/javascript"></script>
+    </head>
+    <body>
+        <header>
+            <h3>Jianglong Yu</h3>
+            <h3><a href="#email">Email me</a></h3>
+            <div class="question">
+                <h3><a href="#question">Question</a></h3>
+            </div>
+        </header>
+
+        <article class="popBox" id="email">
+            <div class="con">
+                <a href="#" class="close"></a>
+                <p>My email is yujian@oregonstate.edu</p>
+            </div>
+        </article>
+        <article class="popBox" id="question">
+            <div class="con">
+                <a href="#" class="close"></a>
+                <p>For the input box, please input the city your are in. And select one city your want to go,
+                    then click the search button. You will see five option in a new page. Just choose one which 
+                    information you want to know about this city.
+                </p>
+            </div>
+        </article>
+
+        <br>
+        <main>
+            <div class="post-title">
+                <h3>Where will you go next?</h3>
+            </div>
+
+
+            <form action="" class="searching_loction_container">
+                <div class="input_box">
+                    <h5>Your location</h5>
+                    <input class = "input_b_box" type="text" id="user_city" name = "user_city" placeholder="Corvallis, Portland">
+                </div>
+                <div class="select_box">
+                    <h5>City you want to go</h5>
+                    <select id="travel_city" class="filter-input" name="travel_city">
+                        <option selected value="">--Choose a city--</option>
+                        <option>New York</option>
+                        <option>Los Angeles</option>
+                        <option>San Francisco</option>
+                        <option>Seattle</option>
+                        <option>Chicago</option>
+                        <option>Hawaii</option>
+                    </select>
+                </div>
+                <!-- <h3 id = "search button" class="search"><a href="option.html">Search</a></h3> -->
+                <button id = "search button" class="search" onclick="search();">Search</button>
+
+                <script>
+                    function search() {
+                        $.ajax({
+                            url: "search",
+                            type: "GET", 
+                            data: { "user_city": $("#user_city").val(),"travel_city":$("#travel_city").val()},
+                            success: function (result) {
+                                if (result.message == "success!") {
+                                    window.location.href="options";
+                                }
+                                else {
+                                    alert(result.message)
+                                }
+                            }
+                        });
+                    }
+                </script>
+
+            </form>
+
+        </main>
+    </body>
+    
+<html>
