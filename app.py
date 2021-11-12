@@ -15,6 +15,7 @@ def root():
 
 @app.route("/search",methods=["GET", "POST"])
 def search():
+    # get user input and selection from Front ends
     if request.method == "POST":
         session['user_city'] = request.form.get("user_city")
         session['travel_city'] = request.form.get("travel_city")
@@ -22,6 +23,7 @@ def search():
         session['user_city']  = request.args.get("user_city")
         session['travel_city'] = request.args.get("travel_city")
 
+    # send the message to the front ends
     if len(session['user_city']) == 0 or len(session['travel_city']) ==0:
         return {'message':"error!"}
     else:
@@ -32,10 +34,12 @@ def search():
 def options():
     return render_template("options.html")
 
+# microsevice get the image and download them into local folder
 def microsevice_image(image_Name):
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = imagesend_pb2_grpc.ImageSendStub(channel)
         response = stub.Imagerequest(imagesend_pb2.image_name(image_name1=image_Name))
+    # set the photo path
     filename1 = "./static/image_"+image_Name+"/"+image_Name+"1.jpg"
     os.makedirs(os.path.dirname(filename1), exist_ok=True)
     with open(filename1,"wb") as f:
