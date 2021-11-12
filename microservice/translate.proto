@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Greeter {
+  rpc translate(original_text) returns (translated_text) {}
+}
+
+message original_text {
+  string original_text1 = 1;
+}
+
+message translated_text {
+  string translated_text1 = 1;
+}
