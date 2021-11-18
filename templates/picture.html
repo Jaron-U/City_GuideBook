@@ -7,7 +7,9 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous">
     
-        <!-- <link rel="stylesheet" href="style.css"> -->
+        <!-- <link rel="stylesheet" href="picture.css"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/picture.css') }}">
+
         <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     </head>
 
@@ -20,10 +22,10 @@
             }
         </script>
         <header>
-            <h1>Picture page</h1>
+            <h1 class="title">Picture Page</h1>
             <hr>
             <br>
-            <h2>Picture of {{city_name}}:</h2>
+            <h2 class="title1">Picture of {{city_name}}:</h2>
         </header>
         {% for image in imagelist %}
         <img src="{{url_for('static', filename = image)}}" width="500">
