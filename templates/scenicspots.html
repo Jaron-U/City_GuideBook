@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>scenicspots page</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:100" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous">
+    
+        <!-- <link rel="stylesheet" href="picture.css"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/scenicspots.css') }}">
+
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+
+    
+    <body>
+        <button id = "backbut" class="backbut" onclick="backop();">Back</button>
+        <script>
+            function backop() {
+                window.location.href="options";
+            }
+        </script>
+        <header>
+            <h1 class="title">SCENIC SPOTS</h1>
+            <hr>
+            <br>
+            <h2 class="title1">Scenic spots of {{city_name}}:</h2>
+        </header>
+        <div class = "spot">
+            {% for i in result %}
+            <h3 class="name"><a class="name_link" href="{{result[i]['link']}}" target="_blank">{{result[i]['name']}}</a></h3>
+            <h3 class="reviewCount">Review Count: {{result[i]['reviewCount']}}</h3>
+            <h3 class="rating">Rating: {{result[i]['rating']}}</h3>
+            <h3 class="type">Type: {{result[i]['type']}}</h3>
+            <h3 class="position">Position: {{result[i]['position']}}</h3>
+            <br>
+            {% endfor %}
+        </div>
+        
+        <div class="reference">
+            <hr>
+            <h3 class="link">Data from <a class="sourch_link" href="{{url}}" target="_blank">yelp.com</a></h3>
+        </div>
+    </body>
+</html>

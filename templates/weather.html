@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Weather page</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:100" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous">
+    
+        <!-- <link rel="stylesheet" href="weather.css"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/weather.css') }}">
+
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+
+    
+    <body>
+        <button id = "backbut" class="backbut" onclick="backop();">Back</button>
+        <script>
+            function backop() {
+                window.location.href="options";
+            }
+        </script>
+        <header>
+            <h1 class="title">WEATHER</h1>
+            <h2 class="title1">Weahter of {{city_name}}:</h2>
+            <hr>
+            <br>
+        </header>
+        <div class="today_weather">
+            <h3>Now: {{data["dayhour"]}}</h3>
+            <h3>Temperature now: {{data['temp_now']}}°C</h3>
+            <h3>Description: {{data['weather_now']}}</h3>
+            <h3>Precipitation: {{data["precipitation"]}}</h3>
+            <h3>Humidity: {{data["humidity"]}}</h3>
+            <h3>Wind: {{data["wind"]}}</h3>
+        </div>
+        <br>
+        <hr>
+        <h2 class ="nds">Next Days: </h2>
+        <div class="Next_days">
+                {% for dayweather in data["next_days"] %}
+                    <h3 class = "day_n">-----{{dayweather["name"]}}-----</h3>
+                    <h3 class = "dsri">Description: {{dayweather["weather"]}}</h3>
+                    <h3 class = "max_t">Max temperature: {{dayweather['max_temp']}}°C</h3>
+                    <h3 class = "min_t">Min temperature: {{dayweather['min_temp']}}°C</h3>
+                {% endfor %}
+        </div>
+
+        <div class ="reference">
+            <hr>
+            <h3 class="link">Data from <a class="sourch_link" href="{{url}}" target="_blank">weather.com</a></h3>
+        </div>
+    </body>
+</html>

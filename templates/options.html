@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Option page</title>
+        <title>option page</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:100" rel="stylesheet">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" crossorigin="anonymous">
@@ -24,19 +24,40 @@
         </script>
 
         <header>
-            <h1 class="title">Option Page</h1>
+            <h1 class="title">OPTIONS</h1>
             <hr>
             <br>
         </header>
-        <button id = "search_button1" class="search1" onclick="picture();">Weather</button>
-        <button id = "search_button2" class="search2" onclick="picture();">Driving Time</button>
-        <button id = "search_button3" class="search3" onclick="picture();">Viewspots</button>
-        <button id = "search_button4" class="search4" onclick="picture();">Restaurant</button>
+        <button id = "search_button1" class="search1" onclick="weather();">Weather</button>
+        <button id = "search_button2" class="search2" onclick="distance();">Distance</button>
+        <button id = "search_button3" class="search3" onclick="scenicspots();">ScenicSpots</button>
+        <button id = "search_button4" class="search4" onclick="restaurant();">Restaurant</button>
         <button id = "search_button5" class="search5" onclick="picture();">Picture</button>
         <script>
             function picture() {
                 window.location.href="picture";
             }
         </script>
+        <script>
+            function weather() {
+                window.location.href="weather";
+            }
+        </script>
+         <script>
+            function distance() {
+                window.location.href="distance";
+            }
+        </script>
+        <script>
+            function scenicspots() {
+                window.location.href="scenicspots";
+            }
+        </script>
+        <script>
+            function restaurant() {
+                window.location.href="restaurant";
+            }
+        </script>
+
     </body>
 </html>
