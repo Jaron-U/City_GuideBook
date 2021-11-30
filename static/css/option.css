@@ -1,12 +1,18 @@
 
 body{
-    background-color: rgba(26, 25, 25, 0.866);
+    font-family: "Roboto", serif;
+    margin: 15;
+    background: url('background.jpg') rgba(64, 70, 103, 0.626);
+    background-blend-mode: multiply;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .title{
     color:rgb(247, 247, 247);
     font-size: 50px;
-    margin-left: 40%;
+    margin-left: 43%;
 }
 
 .search1{
@@ -18,8 +24,8 @@ body{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-left: 25%;
-    margin-top: 50px;
+    margin-left: 24%;
+    margin-top: 10%;
 }
 
 .search2{
