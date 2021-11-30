@@ -4,8 +4,10 @@ body {
     font-family: "Roboto", serif;
     margin: 15;
 
-    /* background image */
-    background-image:url('background.jpg');
+    /* background image; */
+    /* background-image:url('background.jpg'); */
+    background: url('background.jpg') rgba(64, 70, 103, 0.626);
+    background-blend-mode: multiply;
     background-repeat:no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -14,11 +16,14 @@ body {
 h3{
     display: inline-block;
     margin-left: 30px;
+    margin-top: 20px;
+    color: white;
 }
 
 .post-title{
     text-align: center;
     font-size: 300%;
+    margin-top: 8%;
 }
 
 .input_box,.select_box{
@@ -51,7 +56,7 @@ h3{
     width: 580px;
     margin-top: 5%;
     margin-left: 30%;
-    background-color:rgba(193, 235, 206, 0.667);
+    background-color:rgba(247, 247, 247, 0.667);
     padding-bottom: 2%;
     padding-left: 1%;
     border-radius: 25px;
@@ -75,7 +80,7 @@ h3{
 
 /*set window context*/
 .popBox .con {
-    background-color: rgba(250, 188, 199, 0.76);
+    background-color: rgba(74, 235, 112, 0.797);
     border-radius: 5px;
     padding: 1.5rem;
     position: relative;
@@ -118,12 +123,29 @@ h3{
 }
 
 .search{
-    background-color: rgba(155, 44, 44, 0.701);
-    font-size: x-large;
-    border-radius: 10px;
+    background-color: rgba(3, 3, 242, 0.701);
+    font-size: 30px;
+    color:white;
+    border-radius: 8px;
     margin-top: 7%;
 }
 
 h5{
     font-size: 15px;
+}
+
+.links{
+    color:#6aff00c3; 
+}
+
+.contact{
+    position:absolute;
+    top:20px;
+    right: 30px;
+}
+
+.question{
+    position:absolute;
+    top:20px;
+    right: 140px;
 }
