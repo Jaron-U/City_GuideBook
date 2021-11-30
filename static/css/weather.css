@@ -1,0 +1,104 @@
+body{
+    font-family: "Roboto", serif;
+    margin: 15;
+    background: url('weather_back.jpg') rgba(64, 70, 103, 0.626);
+    background-blend-mode: multiply;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.title{
+    color:rgb(247, 247, 247);
+    font-size: 50px;
+    margin-left: 43%;
+}
+
+.title1{
+    color:rgb(247, 247, 247);
+}
+
+.backbut{
+    background-color: #d86462;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.backbut{
+    background-color: rgba(26, 25, 25, 0.866); 
+    color: rgb(255, 255, 255); 
+    border: 2px solid #000000;
+}
+
+.backbut:hover{
+    background-color: #d86462;
+    color: rgb(0, 0, 0);
+}
+
+.today_weather{
+    color:rgb(247, 247, 247);
+    margin-left: 40%;
+}
+
+.Next_days{
+    color:rgb(247, 247, 247);
+    display:flex;
+    margin-left: 1px;
+}
+
+/* .next_d_info{
+    margin-left: 1px;
+} */
+
+.nds{
+    white-space: nowrap;
+    margin-top: 5px;
+    color: white;
+}
+
+.day_n{
+    position: relative;
+    white-space: nowrap;
+    margin-left: 30px;
+    margin-top: 1%;
+}
+
+.dsri{
+    white-space: nowrap;
+    margin-left: -125px;
+    margin-top: 3%;
+
+}
+
+.max_t{
+    margin-top: 5%;
+    white-space: nowrap;
+    margin-left: -170px;
+
+}
+
+.min_t{
+    margin-top: 7%;
+    white-space: nowrap;
+    margin-left: -180px;
+}
+
+
+.link{
+    color:rgb(247, 247, 247);
+}
+
+.sourch_link{
+    color:#6aff00c3; 
+    text-decoration:underline; 
+}
+
+.reference{
+    position: relative;
+    bottom: 1%;
+}

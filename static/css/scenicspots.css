@@ -1,0 +1,64 @@
+body{
+    font-family: "Roboto", serif;
+    margin: 15;
+    background: url('ss.jpg') rgba(35, 35, 36, 0.756);
+    background-blend-mode: multiply;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.title{
+    color:rgb(247, 247, 247);
+    font-size: 50px;
+    margin-left: 40%;
+}
+
+.title1{
+    color:rgb(247, 247, 247);
+}
+
+.backbut{
+    background-color: #d86462;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.backbut{
+    background-color: rgba(26, 25, 25, 0.866); 
+    color: rgb(255, 255, 255); 
+    border: 2px solid #000000;
+}
+
+.backbut:hover{
+    background-color: #d86462;
+    color: rgb(0, 0, 0);
+}
+
+.spot{
+    margin-left: 3%;
+    color:white;
+}
+
+.link{
+    color:rgb(247, 247, 247);
+}
+
+.name_link{
+    color: rgba(98, 249, 4, 0.763);
+}
+
+.sourch_link{
+    color:#00ff26bc;
+}
+
+.reference{
+    position: relative;
+    bottom: 1%;
+}
+
