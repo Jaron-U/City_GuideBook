@@ -1,5 +1,11 @@
 body{
-    background-color: rgba(26, 25, 25, 0.866);
+    font-family: "Roboto", serif;
+    margin: 15;
+    background: url('picture.jpg') rgba(35, 35, 36, 0.756);
+    background-blend-mode: multiply;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .title{
@@ -32,4 +38,8 @@ body{
 .backbut:hover{
     background-color: #d86462;
     color: rgb(0, 0, 0);
+}
+
+.images{
+    margin-left: 3%;
 }
