@@ -4,8 +4,6 @@ body {
     font-family: "Roboto", serif;
     margin: 15;
 
-    /* background image; */
-    /* background-image:url('background.jpg'); */
     background: url('background.jpg') rgba(64, 70, 103, 0.626);
     background-blend-mode: multiply;
     background-repeat:no-repeat;
