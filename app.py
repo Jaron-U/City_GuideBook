@@ -152,6 +152,12 @@ def distance_read(url):
     html = response.read().decode('utf-8')
     return html
 
+def get_driving_time(html):
+    e = html.find('Driving time: ') + 22
+    f = html.find('<', e)
+    driving_time = html[e:f]
+    return driving_time
+
 @app.route("/distance")
 def distance():
     url = "https://www.trippy.com/distance/{0}-to-{1}".format(session['user_city'], session['travel_city'])
@@ -162,9 +168,7 @@ def distance():
     c = b+21
     d = html.find('<', c)
     distance_km = html[c:d]
-    e = html.find('Driving time: ') + 22
-    f = html.find('<', e)
-    driving_time = html[e:f]
+    driving_time = get_driving_time(html)
     return render_template("distance.html", user_city = session['user_city'], city_name = session['travel_city'], 
     url = url, distance_m = distance_mile, distance_km = distance_km, driving_t = driving_time)
 
@@ -196,15 +200,8 @@ def get_link(item, result):
     b = link.find("\"", a)
     result['link'] = u_link+link[a:b]
 
-@app.route("/scenicspots")
-def scenicspots():
-    headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'}
-    url = 'https://www.yelp.com/search?find_desc=scenic+spots&find_loc='+session['travel_city']
-    response=requests.get(url,headers=headers)
-    soup=bs(response.content,'lxml')
-    restaustants = soup.select('[class*=container]')[10:18]
-    i=0; t_result={}
-    for item in restaustants:
+def get_all_ss_info(soup, scenicspots, t_result, i):
+    for item in scenicspots:
         if item.find('h4'):
             result = {}
             get_name_rating(item, result, soup, i)
@@ -212,6 +209,16 @@ def scenicspots():
             get_link(item, result)
             t_result[i] = result
             i += 1
+
+@app.route("/scenicspots")
+def scenicspots():
+    headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'}
+    url = 'https://www.yelp.com/search?find_desc=scenic+spots&find_loc='+session['travel_city']
+    response=requests.get(url,headers=headers)
+    soup=bs(response.content,'lxml')
+    scenicspots = soup.select('[class*=container]')[10:18]
+    i=0; t_result={}
+    get_all_ss_info(soup, scenicspots, t_result, i)
     return render_template("scenicspots.html", city_name = session['travel_city'], 
     url = url, result = t_result)
 
@@ -250,14 +257,7 @@ def get_link_rest(item, result):
     b = link.find('\"', a)
     result['link'] = u_link+link[a:b]
 
-@app.route("/restaurant")
-def restaurant():
-    headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'}
-    url='https://www.yelp.com/search?cflt=restaurants&find_loc='+session['travel_city']
-    response=requests.get(url,headers=headers)
-    soup=bs(response.content,'lxml')
-    restaustants = soup.select('[class*=container]')[16:24]
-    i=0; t_result={}
+def get_all_info(restaustants, soup, t_result, i):
     for item in restaustants:
         if item.find('h4'):
             result = {}
@@ -269,5 +269,16 @@ def restaurant():
             get_link(item, result)
             t_result[i] = result
             i+=1
+
+
+@app.route("/restaurant")
+def restaurant():
+    headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'}
+    url='https://www.yelp.com/search?cflt=restaurants&find_loc='+session['travel_city']
+    response=requests.get(url,headers=headers)
+    soup=bs(response.content,'lxml')
+    restaustants = soup.select('[class*=container]')[16:24]
+    i=0; t_result={}
+    get_all_info(restaustants, soup, t_result, i)
     return render_template("restaurant.html", city_name = session['travel_city'], 
     url = url, result = t_result)
