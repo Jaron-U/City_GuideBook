@@ -12,7 +12,7 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for , 
 from flask import session
 import os
 app = Flask(__name__)
-HEADER = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15"
+agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15"
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
@@ -88,7 +88,7 @@ def backop():
 
 ####Weater page
 # Reference from: https://www.thepythoncode.com/article/extract-weather-data-python
-USER_AGENT = HEADER
+USER_AGENT = agent
 LANGUAGE = "en-US,en;q=0.5"
 # create a soup
 def create_soup(soup):
@@ -148,7 +148,7 @@ def weather():
 def distance_read(url):
     url = ''.join(url.split())
     req = urllib.request.Request(url)
-    req.add_header('User-Agent', HEADER)
+    req.add_header('User-Agent', agent)
     response = urllib.request.urlopen(url)
     html = response.read().decode('utf-8')
     return html
@@ -213,7 +213,7 @@ def get_all_ss_info(soup, scenicspots, t_result, i):
 
 @app.route("/scenicspots")
 def scenicspots():
-    headers = {'User-Agent':HEADER}
+    headers = {'User-Agent':agent}
     url = 'https://www.yelp.com/search?find_desc=scenic+spots&find_loc='+session['travel_city']
     response=requests.get(url,headers=headers)
     soup=bs(response.content,'lxml')
@@ -274,7 +274,7 @@ def get_all_info(restaustants, soup, t_result, i):
 
 @app.route("/restaurant")
 def restaurant():
-    headers = {'User-Agent':HEADER}
+    headers = {'User-Agent':agent}
     url='https://www.yelp.com/search?cflt=restaurants&find_loc='+session['travel_city']
     response=requests.get(url,headers=headers)
     soup=bs(response.content,'lxml')
