@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service ImageSend {
+  rpc Imagerequest(image_name) returns (images) {}
+}
+
+message image_name {
+  string image_name1 = 1;
+}
+
+message images {
+  bytes images1 = 1;
+  bytes images2 = 2;
+}
