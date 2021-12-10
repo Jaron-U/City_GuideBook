@@ -13,3 +13,9 @@ flask run
 
 step 3: open this link in Chrome browser.
 http://127.0.0.1:5000/
+
+
+
+Or open this link to test this program.
+Only support PC chrome.
+http://jaronu.pythonanywhere.com/
