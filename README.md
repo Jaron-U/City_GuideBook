@@ -1,4 +1,10 @@
 # CS361-City GuideBook
+Built the front end with HTML and CSS, and implemented the information search and track functions by Flask and Python.
+l Constructed photo-providing microservice by gPRC so that the program could obtain photos according to the user needs.
+
+
+
+
 How to run:
 
 step 1: open the folder mircoservers into a compiler.
